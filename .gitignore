@@ -1,0 +1,24 @@
+# 환경변수 (API 키 포함 - 절대 커밋 금지)
+**/.env
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.hypothesis/
+
+# Node
+**/node_modules/
+**/dist/
+**/.vite/
+
+# SQLite DB
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
+# OS
+.DS_Store
+Thumbs.db
