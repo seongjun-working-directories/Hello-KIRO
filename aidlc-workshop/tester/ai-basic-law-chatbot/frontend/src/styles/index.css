@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'KBFGDisplay';
+  src: url('/fonts/KBFGDisplay-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'KBFGDisplay';
+  src: url('/fonts/KBFGDisplay-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'KBFGText';
+  src: url('/fonts/KBFGText-Light.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'KBFGText';
+  src: url('/fonts/KBFGText-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'KBFGText';
+  src: url('/fonts/KBFGText-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #F5F5F5;
+  }
+}

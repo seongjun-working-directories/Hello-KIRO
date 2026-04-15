@@ -1,0 +1,37 @@
+# 환경변수 (API 키 포함 - 절대 커밋 금지)
+**/.env
+!**/.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.hypothesis/
+*.egg-info/
+dist/
+build/
+
+# SQLite DB (법령 데이터 포함 - 용량 크고 재생성 가능)
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
+# Node
+**/node_modules/
+**/dist/
+**/.vite/
+
+# 폰트 파일 (용량 큼)
+**/fonts/*.ttf
+
+# PDF 원문 (저작권 및 용량)
+**/data/*.pdf
+**/data/guidelines/
+
+# 로그
+*.log
+
+# OS
+.DS_Store
+Thumbs.db

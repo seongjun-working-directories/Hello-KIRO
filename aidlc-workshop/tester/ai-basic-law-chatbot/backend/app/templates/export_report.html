@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<style>
+  @font-face {
+    font-family: 'KBFGDisplay';
+    src: url('file:///{{ font_dir }}/KBFGDisplay-Light.ttf') format('truetype');
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: 'KBFGDisplay';
+    src: url('file:///{{ font_dir }}/KBFGDisplay-Medium.ttf') format('truetype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'KBFGText';
+    src: url('file:///{{ font_dir }}/KBFGText-Light.ttf') format('truetype');
+    font-weight: 300;
+  }
+  @font-face {
+    font-family: 'KBFGText';
+    src: url('file:///{{ font_dir }}/KBFGText-Medium.ttf') format('truetype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'KBFGText';
+    src: url('file:///{{ font_dir }}/KBFGText-Bold.ttf') format('truetype');
+    font-weight: 700;
+  }
+  body { font-family: 'KBFGText', sans-serif; font-weight: 500; margin: 40px; color: #1a1a1a; }
+  h1 { font-family: 'KBFGDisplay', sans-serif; font-weight: 500; font-size: 24px; }
+  h2 { font-family: 'KBFGDisplay', sans-serif; font-weight: 300; font-size: 18px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+  .meta { color: #555; font-size: 13px; margin-bottom: 24px; }
+  .overall { font-size: 16px; font-weight: 700; margin: 16px 0; }
+  .compliant { color: #16a34a; }
+  .partially { color: #d97706; }
+  .non-compliant { color: #dc2626; }
+  .item { border: 1px solid #e5e7eb; border-radius: 6px; padding: 12px; margin-bottom: 12px; }
+  .item-header { font-weight: 700; margin-bottom: 4px; }
+  .priority-high { color: #dc2626; }
+  .priority-mid { color: #d97706; }
+  .priority-low { color: #6b7280; }
+  .disclaimer { margin-top: 32px; padding: 12px; background: #f9fafb; border-left: 4px solid #6b7280; font-size: 12px; color: #6b7280; }
+</style>
+</head>
+<body>
+  <h1>AI 기본법 준수 분석 보고서</h1>
+  <div class="meta">
+    <div>분석 일시: {{ analyzed_at }}</div>
+    <div>프로젝트 요약: {{ project_summary }}</div>
+  </div>
+
+  <h2>전체 준수 등급</h2>
+  <div class="overall {% if overall == 'Compliant' %}compliant{% elif overall == 'Partially Compliant' %}partially{% else %}non-compliant{% endif %}">
+    {{ overall }}
+  </div>
+
+  {% if items %}
+  <h2>주요 개선 권고사항</h2>
+  {% for item in items %}
+  <div class="item">
+    <div class="item-header">{{ item.article_no }} - {{ item.title }}
+      <span class="{% if item.priority == '높음' %}priority-high{% elif item.priority == '중간' %}priority-mid{% else %}priority-low{% endif %}">
+        [{{ item.priority }}]
+      </span>
+    </div>
+    <div>상태: {{ item.status }}</div>
+    {% if item.recommendation %}
+    <div>권고사항: {{ item.recommendation }}</div>
+    {% endif %}
+    {% if item.article_summary %}
+    <div>조항 요약: {{ item.article_summary }}</div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% endif %}
+
+  <div class="disclaimer">
+    본 결과는 참고용이며, 법적 효력이 없습니다. 정확한 법률 해석은 전문가에게 문의하세요.
+  </div>
+</body>
+</html>
